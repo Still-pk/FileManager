@@ -58,8 +58,9 @@ public class Main {
         jframe.setVisible(true);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.Y_AXIS));
-        jframe.getContentPane().add(buttonPanel,BorderLayout.CENTER);
-
+        jframe.getContentPane().add(buttonPanel,BorderLayout.SOUTH);
+        MyPanel mypanel = new MyPanel();
+        jframe.getContentPane().add(mypanel,BorderLayout.CENTER);
 
         //добавление кнопки создания файла
         JButton addButton = new JButton("    Add file  ");
