@@ -55,9 +55,9 @@ public class Main {
         JScrollPane jScrollPane = new JScrollPane(jt);
         jScrollPane.setPreferredSize(new Dimension(200,800));
         jframe.getContentPane().add(jScrollPane,BorderLayout.WEST);
-        jframe.setVisible(true);
+
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.Y_AXIS));
+        buttonPanel.setLayout(new FlowLayout());
         jframe.getContentPane().add(buttonPanel,BorderLayout.SOUTH);
         MyPanel mypanel = new MyPanel();
         jframe.getContentPane().add(mypanel,BorderLayout.CENTER);
@@ -91,6 +91,7 @@ public class Main {
         jt.setDropMode(DropMode.ON);
         jt.setTransferHandler(new MyTransferHandler());
 
+        jframe.setVisible(true);
 
     }
 
