@@ -19,19 +19,15 @@ public class ListMouseAdapter extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
         super.mouseClicked(e);
-        //JList list = (JList) e.getSource();
         if (e.getClickCount() == 2) {
             String selected = jlist.getSelectedValue().toString();
             String back = "...";
 
-
             if (selected.equals(back)) {
                 if (jlist.getLastVisibleIndex() > 0) {
                     jlist.setSelectedIndex(2);
-                    System.out.println("back");
                     if (jlist.getSelectedValue() != null) {
                         String selected2 = jlist.getSelectedValue().toString();
-                        System.out.println("Selected2 = " + selected2);
                         try {
                             File father = new File(new File(selected2).getParent());
                             File parent = father.getParentFile();
@@ -66,10 +62,8 @@ public class ListMouseAdapter extends MouseAdapter {
                     }
                 }
             } else {
-                    System.out.println("selected1 =" + selected);
                     File folder = new File(selected);
                     fatherOld = new File(selected).getParent();
-                    System.out.println("fatherOld" + fatherOld);
                     if (folder.isDirectory()) {
                         File[] folders = folder.listFiles();
                         if (folders != null) {
@@ -78,8 +72,6 @@ public class ListMouseAdapter extends MouseAdapter {
                                 for (File folder1 : folders) {
                                     yoursListModel.addElement(folder1.toString());
                                 }
-                            System.out.println("last index"+jlist.getLastVisibleIndex());
-
                         }
                     }
                 }
