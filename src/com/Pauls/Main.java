@@ -1,6 +1,5 @@
-package com.company;
+package com.Pauls;
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.tree.*;
 import java.awt.*;
 import java.io.File;
@@ -14,7 +13,7 @@ public class Main {
         jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jframe.setLayout(new BorderLayout());
         File[] froots = File.listRoots();
-        DefaultMutableTreeNode super_root = new DefaultMutableTreeNode("My Computer");
+        DefaultMutableTreeNode super_root = new DefaultMutableTreeNode("Root");
         DefaultTreeModel defaultTreeModel = new DefaultTreeModel(super_root);
         for (File froot : froots) {
 
@@ -26,32 +25,7 @@ public class Main {
                 super_root.add(mroot);}
         }
         JTree jt = new JTree(defaultTreeModel);
-        jt.addTreeWillExpandListener(new TreeWillExpandListener() {
-            @Override
-            public void treeWillExpand(TreeExpansionEvent event) {
-                DefaultMutableTreeNode mutableTreeNode = (DefaultMutableTreeNode) event.getPath().getLastPathComponent();
-                TreePath selected = event.getPath();
-                jt.setSelectionPath(selected);
-                if (!(mutableTreeNode.toString().equals("My Computer"))){
-                    File myFolder = new File(mutableTreeNode.toString());
-                    File[] files = myFolder.listFiles();
-                    if (files != null) {
-                        for (File f : files ) {
-                            if (f.isDirectory()){
-                                NodeDir dir = new NodeDir(f);
-                                mutableTreeNode.add(dir);
-                            }else {
-                                DefaultMutableTreeNode mfile = new DefaultMutableTreeNode(f);
-                                mutableTreeNode.add(mfile);}
-                        }
-                    }
-                }}
-            @Override
-            public void treeWillCollapse(TreeExpansionEvent event) {
-                TreePath selected = event.getPath().getParentPath();
-                jt.setSelectionPath(selected);
-            }
-        });
+        jt.addTreeWillExpandListener(new MyTreeWillExpandListener(jt));
         JScrollPane jScrollPane = new JScrollPane(jt);
         jScrollPane.setPreferredSize(new Dimension(200,800));
         jframe.getContentPane().add(jScrollPane,BorderLayout.WEST);
@@ -59,8 +33,9 @@ public class Main {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         jframe.getContentPane().add(buttonPanel,BorderLayout.SOUTH);
-        MyPanel mypanel = new MyPanel();
-        jframe.getContentPane().add(mypanel,BorderLayout.CENTER);
+        MyNewPanel myNewPanel = new MyNewPanel();
+        jframe.getContentPane().add(myNewPanel, BorderLayout.CENTER);
+
 
         //добавление кнопки создания файла
         JButton addButton = new JButton("    Add file  ");

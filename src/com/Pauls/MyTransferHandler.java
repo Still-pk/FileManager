@@ -1,4 +1,4 @@
-package com.company;
+package com.Pauls;
 
 import javax.swing.*;
 import javax.swing.tree.TreePath;
@@ -15,10 +15,7 @@ public class MyTransferHandler extends TransferHandler {
         JTree.DropLocation dl = (JTree.DropLocation)info.getDropLocation();
 
         TreePath path = dl.getPath();
-            if (path == null ) {
-                return false;
-            }
-        return true;
+        return path != null;
     }
 
     public boolean importData(TransferHandler.TransferSupport info) {
