@@ -6,6 +6,7 @@ import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.io.File;
+import java.nio.file.Path;
 
 public class MyTreeWillExpandListener implements TreeWillExpandListener {
     private JTree jt;
@@ -19,8 +20,9 @@ public class MyTreeWillExpandListener implements TreeWillExpandListener {
         DefaultMutableTreeNode mutableTreeNode = (DefaultMutableTreeNode) event.getPath().getLastPathComponent();
         TreePath selected = event.getPath();
         jt.setSelectionPath(selected);
-        if (!(mutableTreeNode.toString().equals("My Computer"))){
+        if (!(mutableTreeNode.toString().equals("Root"))){
             File myFolder = new File(mutableTreeNode.toString());
+
             File[] files = myFolder.listFiles();
             if (files != null) {
                 for (File f : files ) {

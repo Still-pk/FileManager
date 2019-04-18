@@ -66,7 +66,8 @@ class SceneView extends JFrame {
         listPanel.setLayout(new GridLayout(0, 1));
         JList<String> list = new JList<>(myListModel);
         list.setSelectedIndex(0);
-
+        FileRenderer fileRenderer = new FileRenderer();
+        list.setCellRenderer(fileRenderer);
         JScrollPane jScrollPane1 = new JScrollPane(list);
         listPanel.add(jScrollPane1);
         list.addFocusListener(new FocusListener() {
