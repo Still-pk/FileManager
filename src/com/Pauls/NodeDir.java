@@ -2,7 +2,9 @@ package com.Pauls;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 
+
 public class NodeDir extends DefaultMutableTreeNode {
+
     NodeDir(Object userObject) {
         super(userObject);
     }
@@ -11,4 +13,6 @@ public class NodeDir extends DefaultMutableTreeNode {
         return false;
     }
 }
+
+
 

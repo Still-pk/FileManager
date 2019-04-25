@@ -33,7 +33,7 @@ class SceneView extends JFrame {
 
 
     void sceneViewStart() {
-        JFrame jframe = new JFrame("My File manager");
+        JFrame jframe = new JFrame("Cupcake");
         jframe.setSize(800, 800);
         jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jframe.setLayout(new BorderLayout());
@@ -41,8 +41,11 @@ class SceneView extends JFrame {
 
         // add tree with scroll panel
         jt = new JTree(myTreeModel);
+        jt.setRootVisible(false);
         MyTreeWillExpandListener myTreeWillExpandListener = new MyTreeWillExpandListener(jt);
         jt.addTreeWillExpandListener(myTreeWillExpandListener);
+        TreeRenderer treeRenderer = new TreeRenderer();
+        jt.setCellRenderer(treeRenderer);
         JScrollPane jScrollPane = new JScrollPane(jt);
         jScrollPane.setPreferredSize(new Dimension(200, 800));
         jt.addFocusListener(new FocusListener() {

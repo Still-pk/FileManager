@@ -24,7 +24,7 @@ class SceneModel {
     void SceneModelStart() {
         //Jtree model
 
-        DefaultMutableTreeNode super_root = new DefaultMutableTreeNode("Root");
+       DefaultMutableTreeNode super_root = new DefaultMutableTreeNode("Root");
         defaultTreeModel = new DefaultTreeModel(super_root);
         File[] froots = File.listRoots();
         for (File froot : froots) {
